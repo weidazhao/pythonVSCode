@@ -216,6 +216,16 @@ function setPythonPath(pythonPath: string, created: boolean = false) {
         vscode.window.showErrorMessage(`Failed to set 'pythonPath'. Error: ${reason.message}`);
         console.error(reason);
     });
+
+    //
+    // Prototype to add autoComplete.extraPaths to settings.json.
+    //
+    pythonConfig.update('autoComplete.extraPaths', ['a', 'b', 'c']).then(() => {
+        //Done
+    }, reason => {
+        vscode.window.showErrorMessage(`Failed to set 'autoComplete.extraPaths'. Error: ${reason.message}`);
+        console.error(reason);
+    });
 }
 
 function presentQuickPickOfSuggestedPythonPaths() {

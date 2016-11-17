@@ -118,7 +118,7 @@ export class NonDebugClient extends DebugClient {
 
             this.pyProc = child_process.spawn(pythonPath, args, { cwd: processCwd, env: environmentVariables });
             this.pyProc.on("error", error => {
-                this.debugSession.sendEvent(new OutputEvent(error, "stderr"));
+                this.debugSession.sendEvent(new OutputEvent(error.message, "stderr"));
             });
             this.pyProc.stderr.setEncoding("utf8");
             this.pyProc.stdout.setEncoding("utf8");
